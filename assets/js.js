@@ -80,34 +80,35 @@ function giveFiveDay(cityName) {
         console.log(data);
         if (data.cod === "200") {
           const city = data.city.name;
-          forecastContainer.innerHTML += `<p>City: ${city}</p>`;
+          fiveDayforecastContainer.innerHTML += `<p>City: ${city}</p>`;
           const forecastDays = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
   
-          
-          for (let i = 0; i < forecastDays.length; i++) {
-            const forecastItem = data.list[i];
+          const forecastList = data.list
+          for (let i = 0; i < forecastList.length && i < 5; i++) {
+            const forecastItem = forecastList[i];
             const date = new Date(forecastItem.dt * 1000);
             const temperature = forecastItem.main.temp;
             const humidity = forecastItem.main.humidity;
             const wind = forecastItem.wind;
             const description = forecastItem.weather[0].description;
   
-            const forecastDay = forecastDays[date.getDay()];
+            const dayIndex = (date.getDay() + i) % 7;
+            const forecastDay = forecastDays[dayIndex];
             const forecastItemElement = document.createElement("div");
             forecastItemElement.setAttribute("class", "forecastItem");
             forecastItemElement.innerHTML = `<br>
               <p>Date: ${forecastDay}</p>
               <p>Temperature: ${temperature} F</p>
               <p>Description: ${description}</p>`;
-            forecastContainer.appendChild(forecastItemElement);
+            fiveDayforecastContainer.appendChild(forecastItemElement);
           }
         } else {
-          forecastContainer.innerHTML = "Forecast not found.";
+          fiveDayforecastContainer.innerHTML = "Forecast not found.";
         }
       })
       .catch((error) => {
         console.log("Error:", error);
-        forecastContainer.innerHTML =
+        fiveDayforecastContainer.innerHTML =
           "An error occurred while fetching the forecast.";
       });
   }
