@@ -11,6 +11,8 @@ Tutor Bobbi Tarkany, w3 schools, chatgpt
 ### Screenshot
 ![screenshot](assets/screenshot.png)
 
+(https://katrod69.github.io/weather/)
+
 ## License
 Attribution-ShareAlike 4.0 International
 
