@@ -9,7 +9,7 @@ Deploys in the browser
 Tutor Bobbi Tarkany, w3 schools, chatgpt
 
 ### Screenshot
-
+![screenshot](assets/screenshot.png)
 
 ## License
 Attribution-ShareAlike 4.0 International
